@@ -10,6 +10,15 @@ import UIKit
 
 class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout {
+    
+    var appCategory: AppCategory? {
+        didSet {
+            if let name = appCategory?.name {
+                nameLabel.text = name
+            }
+        }
+    }
+    
     let cellID = "cellID"
     
     override init(frame: CGRect) {
@@ -67,11 +76,15 @@ UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        if let count = appCategory?.apps?.count {
+            return count
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! AppCell
+        cell.app = appCategory?.apps?[indexPath.item]
         return cell
     }
     
@@ -85,6 +98,41 @@ UICollectionViewDelegateFlowLayout {
 }
 
 class AppCell: UICollectionViewCell {
+    
+    var app: App? {
+        didSet {
+            if let name = app?.Name {
+                appLabel.text = name
+                
+                let rect = NSString(string: name).boundingRect(with: CGSize(width: frame.width, height: 1000), options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin), attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 14)], context: nil)
+                
+                if rect.height > 20 {
+                    categoryLabel.frame = CGRect(x: 0, y: frame.width + 38, width: frame.width, height: 20)
+                    priceLabel.frame = CGRect(x: 0, y: frame.width + 55, width: frame.width, height: 20)
+                } else {
+                    categoryLabel.frame = CGRect(x: 0, y: frame.width + 20, width: frame.width, height: 20)
+                    priceLabel.frame = CGRect(x: 0, y: frame.width + 36, width: frame.width, height: 20)
+                }
+                appLabel.frame = CGRect(x: 0, y: frame.width + 5, width: frame.width, height: 40)
+                appLabel.sizeToFit()
+            }
+            
+            if let price = app?.Price {
+                priceLabel.text = "$\(price)"
+            } else {
+                priceLabel.text = ""
+            }
+            
+            if let category = app?.Category {
+                categoryLabel.text = category
+            }
+            
+            if let imageName = app?.ImageName {
+                image.image = UIImage(named: imageName)
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -96,21 +144,21 @@ class AppCell: UICollectionViewCell {
     
     let image: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "ketup")
         iv.contentMode = .scaleAspectFill
+        iv.layer.cornerRadius = 16
+        iv.layer.masksToBounds = true
         return iv
     }()
     
     let appLabel: UILabel = {
         let label = UILabel()
-        label.text = "Ketup"
         label.font = UIFont.systemFont(ofSize: 14)
+        label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     let categoryLabel: UILabel = {
         let label = UILabel()
-        label.text = "Entertainment"
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor.darkGray
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -118,7 +166,6 @@ class AppCell: UICollectionViewCell {
     }()
     let priceLabel: UILabel = {
         let label = UILabel()
-        label.text = "$3.99"
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor.darkGray
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -132,9 +179,9 @@ class AppCell: UICollectionViewCell {
         addSubview(priceLabel)
         
         image.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.width)
-        appLabel.frame = CGRect(x: 0, y: frame.width-5, width: frame.width, height: 40)
-        categoryLabel.frame = CGRect(x: 0, y: frame.width + 23, width: frame.width, height: 20)
-        priceLabel.frame = CGRect(x: 0, y: frame.width + 40, width: frame.width, height: 20)
+        appLabel.frame = CGRect(x: 0, y: frame.width, width: frame.width, height: 40)
+        categoryLabel.frame = CGRect(x: 0, y: frame.width + 38, width: frame.width, height: 20)
+        priceLabel.frame = CGRect(x: 0, y: frame.width + 55, width: frame.width, height: 20)
     }
 }
 
