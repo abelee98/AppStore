@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CB760C5B20CDCEA8000F0A27 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB760C5A20CDCEA8000F0A27 /* CategoryCell.swift */; };
-		CB760C5D20CDD7EE000F0A27 /* playstore-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB760C5C20CDD7ED000F0A27 /* playstore-icon.png */; };
 		CB760C5F20CDEAEC000F0A27 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB760C5E20CDEAEC000F0A27 /* Models.swift */; };
 		CBA3D74420CCB4DA00FC55A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA3D74320CCB4DA00FC55A9 /* AppDelegate.swift */; };
 		CBA3D74620CCB4DA00FC55A9 /* FeaturedAppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA3D74520CCB4DA00FC55A9 /* FeaturedAppsController.swift */; };
@@ -19,7 +18,6 @@
 
 /* Begin PBXFileReference section */
 		CB760C5A20CDCEA8000F0A27 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
-		CB760C5C20CDD7ED000F0A27 /* playstore-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "playstore-icon.png"; path = "../../Dropbox/Finished KetchUp/Icon/android/playstore-icon.png"; sourceTree = "<group>"; };
 		CB760C5E20CDEAEC000F0A27 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		CBA3D74020CCB4DA00FC55A9 /* AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA3D74320CCB4DA00FC55A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +44,6 @@
 			children = (
 				CBA3D74220CCB4DA00FC55A9 /* AppStore */,
 				CBA3D74120CCB4DA00FC55A9 /* Products */,
-				CB760C5C20CDD7ED000F0A27 /* playstore-icon.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -133,7 +130,6 @@
 			files = (
 				CBA3D74E20CCB4DC00FC55A9 /* LaunchScreen.storyboard in Resources */,
 				CBA3D74B20CCB4DC00FC55A9 /* Assets.xcassets in Resources */,
-				CB760C5D20CDD7EE000F0A27 /* playstore-icon.png in Resources */,
 				CBA3D74920CCB4DA00FC55A9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,14 +13,6 @@ class AppCategory: NSObject {
     var apps: [App]?
     var type: String?
     
-//    override func setValue(_ value: Any?, forKey key: String) {
-//        if key == "apps" {
-//
-//        } else {
-//            super.setValue(value, forKey: key)
-//        }
-//    }
-    
     static func fetchFeaturedApps(completionHandler: @escaping ([AppCategory]) -> ()) {
         let urlString = URL(string: "https://api.letsbuildthatapp.com/appstore/featured")!
         let URLString = URLRequest(url: urlString)
